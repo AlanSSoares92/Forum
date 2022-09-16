@@ -3,13 +3,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
-
 import br.com.alura.forum.modelo.Topico;
 public class TopicoDTO {
+	
 	
 	private Long id;
 	private String titulo;

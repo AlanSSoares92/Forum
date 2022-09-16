@@ -3,8 +3,6 @@ package br.com.alura.forum.controller;
 import java.net.URI;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,14 +36,14 @@ public class TopicoController {
 				return TopicoDTO.converter(topicos);
 //				return TopicoDTO.converter(Arrays.asList(topico, topico, topico));
 			}else {
-				List<Topico> topicos = topicoRepository.findByCursoNome(nomeCurso);
+				List<Topico> topicos = topicoRepository.minhaChamada(nomeCurso);
 				return TopicoDTO.converter(topicos);
 //				return TopicoDTO.converter(Arrays.asList(topico, topico, topico));
 			}
 		
 	}
 		@PostMapping
-		public ResponseEntity<TopicoDTO> cadastrar(@RequestBody @Valid TopicoForm form, UriComponentsBuilder uriBuilder) {
+		public ResponseEntity<TopicoDTO> cadastrar(@RequestBody TopicoForm form, UriComponentsBuilder uriBuilder) {
 			Topico topico = form.converter(cursoRepository);
 			topicoRepository.save(topico);
 			URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();

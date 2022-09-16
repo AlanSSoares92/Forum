@@ -11,10 +11,10 @@ import br.com.alura.forum.modelo.Topico;
 public interface TopicoRepository extends JpaRepository<Topico, Long>{
 
 	//criando metodo findBy + nome do atributo mais recurso
-	List<Topico> findByCursoNome(String nomeCurso);
+//	List<Topico> findByCursoNome(String nomeCurso);
 //	
 	//criando metodo da maneira deseja porém tendo que preencher a query - jpqe
-//	@Query("SELECT t FROM Topico t WHERE t.curso.nome = :nomeCurso")
-//	List<Topico> minhaChamada(@Param("nomeCurso") String nomeCurso);
+	@Query("SELECT t FROM Topico t WHERE t.curso.nome = :nomeCurso")
+	List<Topico> minhaChamada(@Param("nomeCurso") String nomeCurso);
 
 }
