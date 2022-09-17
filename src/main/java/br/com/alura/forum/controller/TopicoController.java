@@ -88,7 +88,9 @@ public class TopicoController {
 			Optional<?> dele = topicoRepository.findById(id);
 			if(dele.isPresent()) {
 				topicoRepository.deleteById(id);
-				return ResponseEntity.ok().build();
+//				return ResponseEntity.ok().build();
+				return ResponseEntity.ok().body("REMOVIDO COM SUCESSO");
+				
 
 			}
 			return ResponseEntity.notFound().build();	
